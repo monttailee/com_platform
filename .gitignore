@@ -1,0 +1,14 @@
+*.log
+.DS_Store
+.jest-*
+dist
+lib
+node_modules
+packages/*/node_modules
+lerna-debug.log
+.npmrc
+.vscode
+.idea
+package-lock.json
+yarn.lock
+yarn-error.log

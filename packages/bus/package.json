@@ -1,0 +1,17 @@
+{
+  "name": "bus",
+  "version": "1.0.0",
+  "description": "bus com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "lidy",
+  "license": "ISC",
+  "dependencies": {
+   
+  }
+}
