@@ -4,7 +4,7 @@
    lerna基于npm scripts，提供了包的版本管理，快速发布npm等
 
 ### 技术栈
-    lerna + storybook + rollup + typescript + jest
+    lerna + storybook + rollup + typescript + react + jest
 
 ### 功能
    组件开发
@@ -23,3 +23,13 @@
    lerna create  添加package
    lerna bootstrap  安装各page依赖
    lerna clean 清空各个page的node_modules  --不保留各个page的nm，统一在根目录维护一个nm
+
+   yarn add @storybook/react --dev
+
+
+   npm i -g @storybook/cli
+   getstorybook
+   yarn run storybook
+
+### 疑点解析
+   storybook是独立工作的，单独起服务，单独编译...
