@@ -19,9 +19,6 @@ setTimeout(()=>{
 }, 1000);
 
 configList.map((config, index) => {
-
-  config.output.sourcemap = true;
-
   if( index === 0 ) {
     config.plugins = [
       ...config.plugins,

@@ -4,8 +4,6 @@
   "scripts": {
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "rollup_dev": "node_modules/.bin/rollup -w -c ./build/rollup.config.dev.js",
-    "rollup_build": "node_modules/.bin/rollup -c ./build/rollup.config.prod.js",
     "serve": "cross-env NODE_ENV='development' rollup -w -c ./build/rollup.config.dev.js",
     "build": "cross-env NODE_ENV='production' rollup -c ./build/rollup.config.prod.js"
   },
