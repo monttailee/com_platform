@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "antd-mobile": "^2.3.4",
