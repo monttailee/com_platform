@@ -1,12 +1,15 @@
 const path = require('path');
 const { babel } = require('@rollup/plugin-babel');
-const typescript = require('@rollup/plugin-typescript');
+// const typescript = require('@rollup/plugin-typescript');
+const typescript = require('rollup-plugin-typescript2');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
-const autoprefixer = require('autoprefixer');
-const postcss = require('rollup-plugin-postcss');
 const replace = require('rollup-plugin-replace');
 const sourceMaps = require('rollup-plugin-sourcemaps');
+const postcss = require('rollup-plugin-postcss');
+const less = require('less');
+const autoprefixer = require('autoprefixer');
+
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
@@ -14,7 +17,33 @@ const resolveFile = function(filePath) {
 
 const ismap = process.env.NODE_ENV == 'development' ? 'inline' : false;
 
-const extensions = ['.ts', '.tsx']
+const extensions = ['.ts', '.tsx'];
+
+const processLess = function(context, payload) {
+  return new Promise(( resolve, reject ) => {
+    less.render({
+      file: context
+    }, function(err, result) {
+      if( !err ) {
+        resolve(result);
+      } else {
+        reject(err);
+      }
+    });
+
+    less.render(context, {})
+    .then(function(output) {
+      if( output && output.css ) {
+        resolve(output.css);
+      } else {
+        reject({})
+      }
+    },
+    function(err) {
+      reject(err)
+    });
+  })
+}
 
 // 入口、出口需改造成可配置
 module.exports = [
@@ -24,19 +53,19 @@ module.exports = [
       {
         file: resolveFile('dist/com.cjs.js'),
         format: 'cjs',
-        ismap,
+        sourcemap: ismap,
         exports: 'named'
       },
       {
         file: resolveFile('dist/com.js'),
         format: 'umd',
         name: 'montaiUI',
-        ismap,
+        sourcemap: ismap,
       },
       {
         file: resolveFile('dist/com.esm.js'),
         format: 'es',
-        ismap,
+        sourcemap: ismap,
       }
     ],
     external: ['antd-mobile', 'react', 'react-dom'], //阻止第三方库被打包
@@ -62,11 +91,10 @@ module.exports = [
         typescript: require('typescript'),
       }),
       postcss({
-        minimize: process.env.NODE_ENV == 'production', // 压缩
         extract: false,//是否分离
-        modules: true,
-        extensions: [ '.css', 'less' ],
-        plugins: [autoprefixer()],
+        // modules: true,
+        minimize: process.env.NODE_ENV == 'production', // zip
+        process: processLess,
       }),
       nodeResolve({
         mainFields: ['module', 'main', 'browser'],
@@ -81,7 +109,7 @@ module.exports = [
       }),
       babel({
         extensions,
-        runtimeHelpers: true,
+        babelHelpers: 'runtime',
         include: 'packages/**/src/**/*',
         exclude: 'node_modules/**',
         presets: [
