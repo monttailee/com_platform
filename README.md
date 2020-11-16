@@ -4,7 +4,7 @@
    lerna基于npm scripts，提供了包的版本管理，快速发布npm等
 
 ### 技术栈
-    lerna + storybook + rollup + typescript + react + jest
+    lerna + storybook + rollup + typescript + react + jest + prettier + eslint
 
 ### 功能
    组件开发
@@ -31,5 +31,8 @@
    getstorybook
    yarn run storybook
 
+   npm publish  发布
+
 ### 疑点解析
    storybook是独立工作的，单独起服务，单独编译...
+   打包用rollup
