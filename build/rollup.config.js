@@ -7,8 +7,8 @@ const commonjs = require('@rollup/plugin-commonjs');
 const replace = require('rollup-plugin-replace');
 const sourceMaps = require('rollup-plugin-sourcemaps');
 const postcss = require('rollup-plugin-postcss');
-const less = require('less');
-const autoprefixer = require('autoprefixer');
+const sass = require('node-sass');
+// const autoprefixer = require('autoprefixer');
 
 
 const resolveFile = function(filePath) {
@@ -19,28 +19,16 @@ const ismap = process.env.NODE_ENV == 'development' ? 'inline' : false;
 
 const extensions = ['.ts', '.tsx'];
 
-const processLess = function(context, payload) {
+const processSass = function(context, payload) {
   return new Promise(( resolve, reject ) => {
-    less.render({
+    sass.render({
       file: context
     }, function(err, result) {
       if( !err ) {
         resolve(result);
       } else {
-        reject(err);
+        reject(err)
       }
-    });
-
-    less.render(context, {})
-    .then(function(output) {
-      if( output && output.css ) {
-        resolve(output.css);
-      } else {
-        reject({})
-      }
-    },
-    function(err) {
-      reject(err)
     });
   })
 }
@@ -94,7 +82,8 @@ module.exports = [
         extract: false,//是否分离
         // modules: true,
         minimize: process.env.NODE_ENV == 'production', // zip
-        process: processLess,
+        extensions:['css', 'scss'],
+        process: processSass,
       }),
       nodeResolve({
         mainFields: ['module', 'main', 'browser'],

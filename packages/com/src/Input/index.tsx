@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { InputItem } from 'antd-mobile';
 import classNames from 'classnames';
-import './index.less';
+import './index.scss';
 
 export interface InputProps{
   prefixCls?: string;
