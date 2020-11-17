@@ -1,7 +1,7 @@
 ## 名称：基于lerna的组件开发项目
 
-### 为什么用lerna
-   lerna基于npm scripts，提供了包的版本管理，快速发布npm等
+### 简介
+   该项目采用 monorepos 的组织方式，使用 lerna 进行多包管理，采用集中编译，单独发布的流程。
 
 ### 技术栈
     lerna + storybook + rollup + typescript + react + jest + prettier + eslint
@@ -36,3 +36,4 @@
 ### 疑点解析
    storybook是独立工作的，单独起服务，单独编译...
    打包用rollup
+   所谓【集中编译，单独发布】是指编译的功能提取到根目录执行，npm发布的时候切入到组件目录执行发布命令
