@@ -1,5 +1,5 @@
 {
-  "name": "@montailee/com",
+  "name": "@montai/com",
   "version": "1.0.0",
   "description": "react base com",
   "main": "index.js",
@@ -14,6 +14,7 @@
    
   },
   "files": [
-    "dist"                                       
+    "dist/*.*.js",
+    "dist/*.js"                                 
   ]
 }
