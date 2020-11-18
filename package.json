@@ -1,6 +1,7 @@
 {
-  "name": "root",
+  "name": "com_platform",
   "private": true,
+  "author": "montai",
   "workspaces": [
     "packages/*"
   ],

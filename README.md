@@ -13,13 +13,21 @@
    #### lerna
    lerna init  初始化
    lerna create  创建新的package
-   lerna add * --scope=package1 --dev  添加依赖
-   lerna run --scope package1 test
-   lerna bootstrap  安装各package依赖
+
+   lerna run --scope package1 test 只执行package1中的test
+   
    lerna clean 清空各个package的node_modules
    lerna ls --ndjson 输出所有package名称/版本/位置
    lerna exec -- ***  执行命令语句
-   lerna publish (或单个npm publish --access=public) 发布
+
+   *** lerna add * --scope=package1 --dev  添加依赖 ***
+   *** lerna bootstrap  自动更新包的依赖 ***
+   *** lerna publish  (或单个npm publish --access=public) 发布 ***
+
+   ##### lerna add详解
+   ① lerna add * [--dev] 添加依赖就用它(相当于yarn add || npm install)
+   ② lerna add @montai/com --scope=@montai/bus 内部模块之间添加依赖时，模块名一定是package的name
+   *** 我们使用了yarn workspace，所以就不要再设置bootstrap的hoist属性了，两者功能重叠，都设置了会报错的，它们的功能都是在根目录维护一个公用node_modules ***
 
    #### storybook
    yarn run storybook

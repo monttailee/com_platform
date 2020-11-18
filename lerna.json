@@ -4,6 +4,7 @@
   "packages": [
     "packages/*"
   ],
+  "version": "1.0.0",
   "command": {
     "publish": {
       "ignoreChanges": ["*.md", "**/test/**"],
@@ -11,10 +12,6 @@
       "allowBranch": "master",
       "conventionalCommits": true,
       "exact": true
-    },
-    "bootstrap": {
-      "hoist": true
     }
-  },
-  "version": "1.0.0"
+  }
 }

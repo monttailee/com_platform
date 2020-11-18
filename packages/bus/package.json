@@ -14,7 +14,7 @@
   "files": [
     "dist"
   ],
-  "devDependencies": {
-
+  "dependencies": {
+    "@montai/com": "^1.0.0"
   }
 }
