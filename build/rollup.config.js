@@ -16,6 +16,8 @@ const resolveFile = function(filePath) {
 }
 
 const ismap = process.env.NODE_ENV == 'development' ? 'inline' : false;
+const currPackage = process.env.PACKAGE;
+console.log('----------------当前编译package-----------------：', currPackage)
 
 const extensions = ['.ts', '.tsx'];
 
@@ -36,22 +38,22 @@ const processSass = function(context, payload) {
 // 入口、出口需改造成可配置
 module.exports = [
   {
-    input: resolveFile('packages/com/src/index.tsx'),
+    input: resolveFile(`packages/${currPackage}/src/index.tsx`),
     output: [
       {
-        file: resolveFile('dist/com.cjs.js'),
+        file: resolveFile(`packages/${currPackage}/dist/${currPackage}.cjs.js`),
         format: 'cjs',
         sourcemap: ismap,
         exports: 'named'
       },
       {
-        file: resolveFile('dist/com.js'),
+        file: resolveFile(`packages/${currPackage}/dist/${currPackage}.js`),
         format: 'umd',
-        name: 'montaiUI',
+        name: `${currPackage}ui`,
         sourcemap: ismap,
       },
       {
-        file: resolveFile('dist/com.esm.js'),
+        file: resolveFile(`packages/${currPackage}/dist/${currPackage}.esm.js`),
         format: 'es',
         sourcemap: ismap,
       }

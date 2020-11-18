@@ -1,11 +1,17 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "serve": "cross-env NODE_ENV='development' rollup -w -c ./build/rollup.config.dev.js",
-    "build": "cross-env NODE_ENV='production' rollup -c ./build/rollup.config.prod.js"
+    "build-com": "cross-env NODE_ENV='production' PACKAGE='com' rollup -c ./build/rollup.config.prod.js",
+    "build-bus": "cross-env NODE_ENV='production' PACKAGE='bus' rollup -c ./build/rollup.config.prod.js",
+    "build-tool": "cross-env NODE_ENV='production' PACKAGE='tool' rollup -c ./build/rollup.config.prod.js",
+    "build": "yarn build-com && yarn build-bus && build-tool"
   },
   "dependencies": {
     "antd-mobile": "^2.3.4",
