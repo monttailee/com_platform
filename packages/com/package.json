@@ -1,6 +1,6 @@
 {
   "name": "@montai/com",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "react base com",
   "author": "montai",
   "main": "dist/index.cjs.js",
