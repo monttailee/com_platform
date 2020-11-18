@@ -7,7 +7,7 @@
    lerna + storybook + rollup + typescript + react + jest + prettier + eslint
 
 ### 操作流程
-   组件开发 --> *单元测试 || storybook || 编译 --> 发布
+   组件开发 --> *单元测试 || storybook || 编译[单个package | 多个package] --> 发布
  
 ### 常用命令
    #### lerna
@@ -19,7 +19,7 @@
    lerna clean 清空各个package的node_modules
    lerna ls --ndjson 输出所有package名称/版本/位置
    lerna exec -- ***  执行命令语句
-   lerna publish 发布(npm publish)
+   lerna publish (或单个npm publish --access=public) 发布
 
    #### storybook
    yarn run storybook

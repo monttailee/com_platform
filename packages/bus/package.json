@@ -1,5 +1,5 @@
 {
-  "name": "@montailee/bus",
+  "name": "@montai/bus",
   "version": "1.0.0",
   "description": "bus com",
   "main": "index.js",
@@ -12,5 +12,9 @@
   "author": "montai",
   "dependencies": {
   
-  }
+  },
+  "files": [
+    "dist/*.*.js",
+    "dist/*.js"                               
+  ]
 }
