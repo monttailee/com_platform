@@ -13,6 +13,11 @@
     "build-tool": "cross-env NODE_ENV='production' PACKAGE='tool' rollup -c ./build/rollup.config.prod.js",
     "build": "yarn build-com && yarn build-bus && build-tool"
   },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "antd-mobile": "^2.3.4"
+  },
   "dependencies": {
     "antd-mobile": "^2.3.4",
     "classnames": "^2.2.6",

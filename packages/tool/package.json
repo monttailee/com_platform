@@ -1,14 +1,20 @@
 {
-  "name": "tool",
+  "name": "@montai/tool",
   "version": "1.0.0",
   "description": "tool fun",
-  "main": "index.js",
+  "author": "montai",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "tool"
   ],
-  "author": "lidy",
-  "license": "ISC"
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+
+  }
 }

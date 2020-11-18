@@ -8,7 +8,9 @@ const replace = require('rollup-plugin-replace');
 const sourceMaps = require('rollup-plugin-sourcemaps');
 const postcss = require('rollup-plugin-postcss');
 const sass = require('node-sass');
+const clear = require('rollup-plugin-clear');
 // const autoprefixer = require('autoprefixer');
+const pkg = require('../package.json');
 
 
 const resolveFile = function(filePath) {
@@ -41,25 +43,29 @@ module.exports = [
     input: resolveFile(`packages/${currPackage}/src/index.tsx`),
     output: [
       {
-        file: resolveFile(`packages/${currPackage}/dist/${currPackage}.cjs.js`),
+        file: resolveFile(`packages/${currPackage}/dist/index.cjs.js`),
         format: 'cjs',
         sourcemap: ismap,
         exports: 'named'
       },
       {
-        file: resolveFile(`packages/${currPackage}/dist/${currPackage}.js`),
-        format: 'umd',
-        name: `${currPackage}ui`,
+        file: resolveFile(`packages/${currPackage}/dist/index.esm.js`),
+        format: 'es',
         sourcemap: ismap,
       },
       {
-        file: resolveFile(`packages/${currPackage}/dist/${currPackage}.esm.js`),
-        format: 'es',
+        file: resolveFile(`packages/${currPackage}/dist/index.js`),
+        format: 'umd',
+        name: `${currPackage}ui`,
         sourcemap: ismap,
       }
     ],
-    external: ['antd-mobile', 'react', 'react-dom'], //阻止第三方库被打包
+    external: [...Object.keys(pkg.peerDependencies)], //阻止第三方库被打包
     plugins: [
+      clear({
+        targets: [`packages/${currPackage}/dist`],
+        watch: true, // default: false
+      }),
       typescript({
         tsconfigDefaults: {
           exclude: [
