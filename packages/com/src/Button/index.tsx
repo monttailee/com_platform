@@ -8,6 +8,8 @@ export interface ButtonProps{
     style?: React.CSSProperties;
     className?: string;
     size?: string;
+    btnType?: string;
+    href?: string;
     onClick?: () => void;
     children: React.ReactNode;
 }
