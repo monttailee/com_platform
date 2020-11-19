@@ -43,10 +43,10 @@
    #### storybook
    yarn run storybook
 
-### 疑点解析
-   > storybook是独立工作的，单独起服务，单独编译
-   > 本项目采用【集中编译，按需发布(单独发布或批量发布)】
-   > 根目录的package.json有private属性说明它是私有的只负责项目管理不会被发布，与其他要发布的package不同
-   > 根目录的package.json添加workspaces属性，让所有依赖全部都在根目录的node_modules维护，除了可执行文件(package.json)
-   > lerna有两种版本管理模式，本项目采用默认的同一版本号
-   > *[package-scripts + tsconfig]原则上应该配置在每个package目录下，本项目提取到了根目录，因为tsconfig变化不大，package-scripts可以编写不同的命令语句，效果一致即可*
+   ### 疑点解析
+   *   storybook是独立工作的，单独起服务，单独编译
+   *   本项目采用【集中编译，按需发布(单独发布或批量发布)】
+   *   根目录的package.json有private属性说明它是私有的只负责项目管理不会被发布，与其他要发布的package不同
+   *   根目录的package.json添加workspaces属性，让所有依赖全部都在根目录的node_modules维护，除了可执行文件(package.json)
+   *   lerna有两种版本管理模式，本项目采用默认的同一版本号
+   *   *[package-scripts + tsconfig]原则上应该配置在每个package目录下，本项目提取到了根目录，因为tsconfig变化不大，package-scripts可以编写不同的命令语句，效果一致即可*
