@@ -1,6 +1,6 @@
 {
   "name": "@montai/bus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "bus com",
   "author": "montai",
   "main": "dist/index.cjs.js",
@@ -15,6 +15,6 @@
     "dist"
   ],
   "dependencies": {
-    "@montai/com": "^1.0.0"
+    "@montai/com": "1.0.1"
   }
 }

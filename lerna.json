@@ -4,10 +4,13 @@
   "packages": [
     "packages/*"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "command": {
     "publish": {
-      "ignoreChanges": ["*.md", "**/test/**"],
+      "ignoreChanges": [
+        "*.md",
+        "**/test/**"
+      ],
       "message": "chore(release): publish",
       "allowBranch": "main",
       "conventionalCommits": true,
