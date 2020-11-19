@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Button } from '@montai/com';
 import classNames from 'classnames';
-import './index.scss';
 
 export interface FormProps{
   prefixCls?: string;

@@ -10,7 +10,7 @@
    组件开发 --> 编译[单个package/多个package] || *单元测试 || storybook  --> 发布
  
 ### 常用命令
-   一些lerna常用操作命令:
+   一些lerna/yarn常用操作命令:
    ##### 初始化
    lerna init
 
@@ -18,12 +18,13 @@
    lerna create
 
    ##### 依赖安装
-   *   yarn install  批量安装
+   *   yarn install  批量安装 || lerna bootstrap
    *   lerna add * [--dev]  单个安装(相当于yarn add || npm install)
    *   lerna add @montai/com --scope=@montai/bus  内部模块之间添加依赖时，模块名一定是package的name
    *   **我们使用了yarn workspace，所以就不要再设置bootstrap的hoist属性了，两者功能重叠，都设置了会报错的，目的都是在根目录维护一个公用node_modules**
 
    ##### 执行命令语句
+   *   yarn *
    *   lerna run --scope package1 test  //只执行package1中的test
    *   lerna exec -- ***
 
@@ -36,9 +37,6 @@
 
    ##### 版本信息
    lerna ls --ndjson 输出所有package名称/版本/位置
-
-   ##### 自动更新包的依赖
-   lerna bootstrap
 
    #### storybook
    yarn run storybook
