@@ -9,7 +9,7 @@
     "publish": {
       "ignoreChanges": ["*.md", "**/test/**"],
       "message": "chore(release): publish",
-      "allowBranch": "master",
+      "allowBranch": "main",
       "conventionalCommits": true,
       "exact": true
     }
