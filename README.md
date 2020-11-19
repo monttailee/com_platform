@@ -18,21 +18,21 @@
    lerna create
 
    ##### 依赖安装
-   > yarn install  批量安装
-   > lerna add * [--dev]  单个安装(相当于yarn add || npm install)
-   > lerna add @montai/com --scope=@montai/bus  内部模块之间添加依赖时，模块名一定是package的name
-   > **我们使用了yarn workspace，所以就不要再设置bootstrap的hoist属性了，两者功能重叠，都设置了会报错的，目的都是在根目录维护一个公用node_modules**
+   *   yarn install  批量安装
+   *   lerna add * [--dev]  单个安装(相当于yarn add || npm install)
+   *   lerna add @montai/com --scope=@montai/bus  内部模块之间添加依赖时，模块名一定是package的name
+   *   **我们使用了yarn workspace，所以就不要再设置bootstrap的hoist属性了，两者功能重叠，都设置了会报错的，目的都是在根目录维护一个公用node_modules**
 
    ##### 执行命令语句
-   > lerna run --scope package1 test  //只执行package1中的test
-   > lerna exec -- ***
+   *   lerna run --scope package1 test  //只执行package1中的test
+   *   lerna exec -- ***
 
    ##### 清空各个package的node_modules
    lerna clean
 
    ##### 发布
-   > lerna publish
-   > **单个发布用： npm publish --access=public**
+   *   lerna publish
+   *   **单个发布用： npm publish --access=public**
 
    ##### 版本信息
    lerna ls --ndjson 输出所有package名称/版本/位置
