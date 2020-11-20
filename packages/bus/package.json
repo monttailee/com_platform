@@ -16,5 +16,6 @@
   ],
   "dependencies": {
     "@montai/com": "1.0.1"
-  }
+  },
+  "gitHead": "0267b618b8fee8c790a3d0be84a375d0bdd05756"
 }

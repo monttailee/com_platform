@@ -7,18 +7,38 @@
     "packages/*"
   ],
   "scripts": {
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "serve": "cross-env NODE_ENV='development' rollup -w -c ./build/rollup.config.dev.js",
+    "commit": "git-cz",
+    "hotc": "cross-env NODE_ENV='development' PACKAGE='com' rollup -w -c ./build/rollup.config.dev.js",
+    "hotb": "cross-env NODE_ENV='development' PACKAGE='bus' rollup -w -c ./build/rollup.config.dev.js",
     "build-com": "cross-env NODE_ENV='production' PACKAGE='com' rollup -c ./build/rollup.config.prod.js",
     "build-bus": "cross-env NODE_ENV='production' PACKAGE='bus' rollup -c ./build/rollup.config.prod.js",
     "build-tool": "cross-env NODE_ENV='production' PACKAGE='tool' rollup -c ./build/rollup.config.prod.js",
-    "build": "yarn build-com && yarn build-bus && build-tool"
+    "build": "yarn build-com && yarn build-bus && build-tool",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,vue}": [
+      "eslint **/*.js --fix-dry-run",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "peerDependencies": {
+    "antd-mobile": "^2.3.4",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "antd-mobile": "^2.3.4"
+    "react-dom": "^17.0.1"
   },
   "dependencies": {
     "antd-mobile": "^2.3.4",
@@ -30,6 +50,8 @@
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
@@ -43,10 +65,23 @@
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
     "autoprefixer": "^10.0.2",
+    "commitizen": "^4.2.2",
     "cross-env": "^7.0.2",
+    "cz-lerna-changelog": "^2.0.3",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-mdx": "^1.8.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
     "husky": "^4.3.0",
+    "jest": "^26.6.3",
     "lerna": "^3.22.1",
+    "lint-staged": "^10.5.1",
     "node-sass": "^5.0.0",
     "prettier": "^2.1.2",
     "rollup": "^2.33.2",

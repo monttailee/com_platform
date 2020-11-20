@@ -17,19 +17,20 @@
    ##### 创建新的package
    lerna create
 
-   ##### 依赖安装
-   *   yarn install  批量安装 || lerna bootstrap
-   *   lerna add * [--dev]  单个安装(相当于yarn add || npm install)
-   *   lerna add @montai/com --scope=@montai/bus  内部模块之间添加依赖时，模块名一定是package的name
-   *   **我们使用了yarn workspace，所以就不要再设置bootstrap的hoist属性了，两者功能重叠，都设置了会报错的，目的都是在根目录维护一个公用node_modules**
+   ##### 依赖安装  应用yarn workspace替换lerna部分命令
+   *   yarn install  批量安装
+   *   lerna add @montai/com [--scope=@montai/bus] [--dev]  内部模块之间添加依赖时，模块名一定是package的name
+   *   yarn workspace packageA add/remove packageB [packageC -D]   为 packageA 安装/删除 packageB、C 依赖（注意yarn安装local dependency时，需要指明版本号(暂时有bug)，否则会安装失败）
+   *   yarn add/remove typescript -W -D  给root安装/删除typescript
+   *   yarn workspaces run add lodash   给所有package安装lodash(不包含root）
+   
+   *   **我们使用了yarn workspace，所以就不要再设置bootstrap的hoist(仅限npmClient=npm)属性了，两者功能重叠，都设置了会报错的，目的都是在根目录维护一个公用node_modules**
 
    ##### 执行命令语句
-   *   yarn *
-   *   lerna run --scope package1 test  //只执行package1中的test
-   *   lerna exec -- ***
+   *   yarn workspaces run *
 
    ##### 清空各个package的node_modules
-   lerna clean
+   lerna clean || yarn workspaces run clean
 
    ##### 发布
    *   lerna publish
@@ -37,6 +38,11 @@
 
    ##### 版本信息
    lerna ls --ndjson 输出所有package名称/版本/位置
+
+   ##### 代码检测 & 代码美化[eslint + prettier + lint-staged]
+
+   ##### 问询式提交[commitizen + cz-lerna-changelog + commitlint(提交描述信息检测)] 
+   yarn run commit
 
    #### storybook
    yarn run storybook
